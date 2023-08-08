@@ -1,0 +1,19 @@
+{
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/",
+      "config\\": "config/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*"
+  },
+  "config": {
+    "allow-plugins": {
+    }
+  },
+  "suggest": {
+  },
+  "autoload-dev": {
+  }
+}
