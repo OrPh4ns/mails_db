@@ -14,20 +14,13 @@ class EmailsController extends Controller
         //$this->middleware('auth');
     }
 
-    /**Nn
-     * Display a listing of the resource.
-     */
     public function index(int $id = 1)
     {
         $id < 0 ? die('Error') : 1;
         $perPage = 100; // Number of items per page
         $offset = ($id - 1) * $perPage;
         $emails = Emails::offset($offset)->limit($perPage)->get();
-        return view('home', ['emails' => $emails, 'next' => (bool)count($emails), 'prev' => $id > 1, 'current' => $id]);
-    }
-
-    public function create()
-    {
+        return view('home', ['emails' => $emails, 'count'=>Emails::count(), 'next' => (bool)count($emails), 'prev' => $id > 1, 'current' => $id]);
     }
 
 

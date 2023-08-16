@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('email_type', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->timestamp('created_at')->nullable();
+            $table->integer('count');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 };

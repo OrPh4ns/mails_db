@@ -9,21 +9,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md bg-body">
-    <div class="container-fluid"><a class="navbar-brand" href="#">Mail<span style="color: rgb(255, 0, 0);">DB</span>
-            Or<span style="color: rgb(255, 0, 0);">P</span>h4ns</a>
-        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Emails</a></li>
-                <li class="nav-item"><a class="nav-link" href="/filter">Filter</a></li>
-                <li class="nav-item"><a class="nav-link" href="/checker">Tpyes Checker</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+@include('nav')
 <div class="container mb-2 mt-2">
     <form method="post" action="{{route('search')}}">
         @csrf
@@ -40,7 +26,7 @@
             <h4 class="alert-heading text-white">{{session('success')}}</h4>
         </div>
     @endif
-    <h1>Total : <span style="color: rgb(6, 140, 59);">{{count($emails)}}</span></h1>
+    <h1>Total : <span style="color: rgb(6, 140, 59);">{{$count}}</span></h1>
     <div class="table-responsive">
         <table class="table">
             <thead>
