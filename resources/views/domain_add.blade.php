@@ -1,27 +1,36 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Domains</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
-</head>
-
-<body>
-@include('nav')
-<div class="container mb-2 mt-2">
-    <div class="container mt-2">
-        <h1>Adding new Domain</h1>
-        <form method="post" action="{{route('type_add')}}">
-            <input type="text" class="mb-2" name="domain" placeholder="Domain ..">
-            <button class="btn btn-secondary mx-2" type="submit">Add</button>
-        </form>
+@extends('layouts.nav')
+@section('title', 'Add Domain')
+@section('content')
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Domains</h3>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">New Domain</p>
+            </div>
+            <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form method="post" action="{{route('domain_add')}}">
+                    @csrf
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Domain</strong></label><input
+                                    class="form-control" type="text" id="domain" placeholder="gmail.con" name="domain">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary btn-sm" type="submit">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-</div>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+@endsection

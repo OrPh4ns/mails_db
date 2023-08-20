@@ -6,7 +6,7 @@
                 <li class="nav-item"><a class="nav-link" href="/filter">Filter</a></li>
                 <li class="nav-item"><a class="nav-link" href="/domains">Domains</a></li>
                 <li class="nav-item"><a class="nav-link" href="/domains_check">Check</a></li>
-                <li class="nav-item"><a class="nav-link" href="/domain/add">Add Domain</a></li>
+                <li class="nav-item"><a class="nav-link" href="/domain_add">Add Domain</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}">Logout</a></li>
             </ul>
         </div>

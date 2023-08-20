@@ -1,63 +1,90 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Filter Mails</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
-</head>
-
-<body>
-@include('nav')
-<div class="container mb-2">
-    <form method="post" action="{{route('filter_post')}}">
-        @csrf
-        <label class="form-label">Emails list</label>
-        <textarea name="emails" class="form-control"></textarea>
-        <button class="btn btn-success mt-2" type="submit">Filter</button>
-    </form>
-</div>
-
-@if(isset($count))
-    <div class="container">
-        <h1>Emails Count : <span style="color: rgb(0, 255, 25);">{{$count}}</span></h1>
-        <h1>New Emails : <span style="color: rgb(65,76,206);">{{count($new_emails)}}</span></h1>
-        <h1>Exists Emails : <span style="color: rgb(206,65,86);">{{count($exist_emails)}}</span></h1>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>New Emails</th>
-                    <th>Exsisting Emails</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <ul class="list-group">
-                            @foreach($new_emails as $k => $new_email)
-                                <li class="list-group-item">{{$k}} - <span>{{$new_email}}</span></li>
-                            @endforeach
-                        </ul>
-                    </td>
-                    <td>
-                        <ul class="list-group">
-                            @foreach ($exist_emails as $k => $exist_email)
-                                <li class="list-group-item">{{$k}} - <span>{{$exist_email}}</span></li>
-                            @endforeach
-                        </ul>
-                    </td>
-                </tr>
-                <tr></tr>
-                </tbody>
-            </table>
+@extends('layouts.nav')
+@section('title', 'Filter')
+@section('content')
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Email list filtering</h3>
+        <div class="row mb-3">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Filtering</p>
+                            </div>
+                            <div class="card-body">
+                                @if(isset($count))
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card shadow border-start-warning mb-2">
+                                                <div class="card-body">
+                                                    <div class="row align-items-center no-gutters">
+                                                        <div class="col me-2">
+                                                            <div class="text-dark fw-bold h5 mb-0">
+                                                                <h1>All Count : <span style="color: rgb(11,175,46);">{{$count}}</span></h1>
+                                                                <h1>New Emails : <span style="color: rgb(65,76,206);">{{count($new_emails)}}</span></h1>
+                                                                <h1>Exists Emails : <span style="color: rgb(206,65,86);">{{count($exist_emails)}}</span></h1>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-auto"><i
+                                                                class="fas fa-chart-bar fa-2x text-gray-300"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card shadow border-start-warning mb-2">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>New Emails</th>
+                                                                <th>Found Counts</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <ul class="list-group">
+                                                                        @foreach($new_emails as $k => $new_email)
+                                                                            <li class="list-group-item">{{$k}} - <span>{{$new_email}}</span></li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </td>
+                                                                <td>
+                                                                    <ul class="list-group">
+                                                                        @foreach ($exist_emails as $k => $exist_email)
+                                                                            <li class="list-group-item">{{$k}} - <span>{{$exist_email}}</span></li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr></tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                <form method="post" action="{{route('filter_post')}}">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Email
+                                                        list</strong></label><textarea name="emails" class="form-control"
+                                                                                       style="height: 210px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Filter</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-@endif
-
-
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    </div>
+@endsection

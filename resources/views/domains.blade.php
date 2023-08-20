@@ -1,70 +1,93 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+@extends('layouts.nav')
+@section('title', 'Filter')
+@section('content')
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Domains</h3>
+        <div class="card shadow mb-2">
+            <div class="card-header py-3">
+                <form method="post" action="{{route('domains_check')}}">
+                    @csrf
+                    <button class="btn btn-primary" name="check" type="submit">Check</button>
+                </form>
+            </div>
+            @if(session()->has('success'))
+                <div class="card-body">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Domains</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
-</head>
-
-<body>
-@include('nav')
-<div class="container mb-2 mt-2">
-
-    <div class="container">
-        <h1>Email Types Checker</h1>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Type</th>
-                    <th>Emails Count</th>
-                    <th>Found_At</th>
-                    <th>Update/Delete</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($domains as $domain)
-                    <tr>
-                        <td>{{$domain->id}}</td>
-                        <td>{{$domain->type}}</p> </td>
-                        <td>{{$domain->count}}</td>
-                        <td>{{$domain->created_at}}</td>
-                        <td><a href="/domain/delete/{{$domain->id}} " onclick="confirm('Are you sure?')">Delete</a> / <a href="/domain/update/{{$domain->id}}">Update</a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    <div class="alert alert-danger text-success text-bg-success alert-dismissible"
+                         role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        <h4 class="alert-heading text-white">{{session('success')}}</h4>
+                    </div>
+                </div>
+            @endif
         </div>
-
-        <form>
-            <button class="btn btn-dark mb-2" type="button">Check</button>
-        </form>
-        <div class="alert alert-success" role="alert"><span><strong>Alert</strong> text.</span></div>
-        <ul class="list-group">
-            <li class="list-group-item w-25"><span>List Group Item 1</span></li>
-            <li class="list-group-item w-25"><span>List Group Item 1</span></li>
-            <li class="list-group-item w-25"><span>List Group Item 1</span></li>
-        </ul>
+        @if(isset($domains))
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Domains</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Domains Count: <span style="color: rgb(20, 129, 136);">{{count($domains)}}</span></h1>
+                        </div>
+                    </div>
+                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                         aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Domain</th>
+                                <th>Created At</th>
+                                <th>Emails Count</th>
+                                <th>Invalid</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($domains as $domain)
+                                <tr>
+                                    <td><strong>{{$domain->id}}</strong></td>
+                                    <td>{{$domain->type}}</td>
+                                    <td>{{$domain->created_at}}</td>
+                                    <td>{{$domain->count}}</td>
+                                    <td class="fas fa-trash text-white"><a class="btn btn-danger btn-circle ms-1"
+                                                                           onclick="return confirm('Are you sure you want to delete this item?')"
+                                                                           href="/domain/invalid/{{$domain->id}}"><i
+                                                class="fas fa-trash text-white"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td><strong>ID</strong></td>
+                                <td><strong>Domain</strong></td>
+                                <td><strong>Created At</strong></td>
+                                <td><strong>Emails Count</strong></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                <ul class="pagination">
+                                    <li class="page-item disabled"><a class="page-link" aria-label="Previous"
+                                                                      href="#"><span
+                                                aria-hidden="true">«</span></a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span
+                                                aria-hidden="true">»</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
-    <div class="container mt-2">
-        <h1>Adding new Domain</h1>
-        <form method="post" action="{{route('type_add')}}">
-            <input type="text" class="mb-2" name="domain" placeholder="Domain ..">
-            <button class="btn btn-secondary mx-2" type="submit">Add</button>
-        </form>
-    </div>
-
-</div>
-<script>
-    function update()
-    {
-        alert(1);
-    }
-</script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+@endsection

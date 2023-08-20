@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Domains;
 use App\Models\Emails;
 use Illuminate\Http\Request;
@@ -10,14 +11,20 @@ class DomainController extends Controller
 {
     public function index()
     {
-        $domains = array();
-        return view('domains', ['domains'=>Domains::all()]);
-        //return Domains::all();
-    }
+        if (!isset($_POST['check']))
+            return view('domains', ['domains' => Domains::orderBy('count', 'desc')->get()]);
+        else {
 
-    public function check(){
-        $domains = Domains::all();
-        return $domains;
+            foreach (Emails::pluck('email') as $email) {
+                $domain = substr($email, strpos($email, '@') + 1);
+                if (!Domains::where('type', $domain)->exists())
+                    Domains::create(['type' => $domain]);
+            }
+            foreach (Domains::all() as $domain) {
+                Domains::where('id', $domain->id)->update(['count' => Emails::where('email', 'LIKE', '%' . $domain->type . '%')->count()]);
+            }
+            //return redirect('/domains')->with(['success' => 'Update created successfully']);
+        }
     }
 
     public function delete(int $id)
@@ -34,5 +41,10 @@ class DomainController extends Controller
     public function store()
     {
         $domain = $_POST['domain'];
+        if (!Domains::where('type', $domain)->exists()) {
+            Domains::create(['type' => $domain, 'count'=>0]);
+            return redirect('/domains')->with(['success' => 'Domain is created successfully']);
+        } else
+            return redirect('/domain_add')->withErrors("Domain $domain exists already");
     }
 }

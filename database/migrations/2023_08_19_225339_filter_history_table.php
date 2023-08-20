@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('domains', function (Blueprint $table) {
+
+        Schema::create('filter_history', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->integer('count')->default(0);
-            $table->boolean('valid')->default(true);
+            $table->integer('count');
             $table->timestamp('created_at')->useCurrent();
         });
     }

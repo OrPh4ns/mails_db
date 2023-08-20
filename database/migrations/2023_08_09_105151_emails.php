@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique()->index();
             $table->integer('found')->default(0);
+            $table->boolean('valid')->default(true);
             $table->timestamp('created_at')->useCurrent();
         });
     }
