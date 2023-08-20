@@ -30,13 +30,18 @@ class EmailsController extends Controller
 
     public function filter()
     {
-        //echo $_POST['emails'];
         $emails = array();
         $pattern = '/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/';
         preg_match_all($pattern, $_POST['emails'], $matches);
         foreach ($matches[0] as $match) {
             $emails[] = $match;
         }
+        $emails = array_values(array_unique($emails));
+
+        foreach ($emails as $email) {
+            echo $email . PHP_EOL;
+        }
+
         if(count($emails))
             FilterHistory::create(['count'=>count($emails)]);
         $new_emails = array();
