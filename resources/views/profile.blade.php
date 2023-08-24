@@ -4,7 +4,7 @@
 
     <div class="container-fluid">
         <h3 class="text-dark mb-4">Profile</h3>
-        <div class="alert alert-success" role="alert"><span><strong>Alert</strong> text.</span></div>
+        @include('components.success')
         <div class="row mb-3">
             <div class="col-lg-8">
                 <div class="row">

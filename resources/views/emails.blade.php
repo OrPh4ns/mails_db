@@ -30,21 +30,6 @@
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-6 text-nowrap">
-                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <select class="form-select w-25">
-                                    <optgroup label="This is a group">
-                                        <option value="12" selected="">This is item 1</option>
-                                        <option value="13">This is item 2</option>
-                                        <option value="14">This is item 3</option>
-                                    </optgroup>
-                                </select>
-                                <button class="btn btn-primary py-0" type="button"
-                                        style="background: var(--bs-purple);"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
                     <div class="col-md-6">
                         <div class="border-start-primary" style="border-width: 1px;"></div>
                         <form method="post" action="{{route('search')}}"

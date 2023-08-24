@@ -30,11 +30,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Domain</th>
-                                <th>Country</th>
                                 <th>Created At</th>
                                 <th>Emails Count</th>
-                                <th>Invalid</th>
-                                <th>Update</th>
+                                <th>Valid</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,16 +40,11 @@
                                 <tr>
                                     <td><strong>{{$domain->id}}</strong></td>
                                     <td>{{$domain->type}}</td>
-                                    <td>{{$domain->country}}</td>
                                     <td>{{$domain->created_at}}</td>
                                     <td>{{$domain->count}}</td>
-                                    <td class="fas fa-trash text-white"><a class="btn btn-danger btn-circle ms-1"
+                                    <td class="fas fa-trash text-white"><a class="btn btn-success btn-circle ms-1"
                                                                            onclick="return confirm('Are you sure you want to delete this item?')"
-                                                                           href="/domain_invalid/{{$domain->id}}"><i
-                                                class="fas fa-trash text-white"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="/domain_update/{{$domain->id}}">Update</a>
+                                                                           href="/domain_valid/{{$domain->id}}">O</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -65,22 +58,6 @@
                             </tr>
                             </tfoot>
                         </table>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" aria-label="Previous"
-                                                                      href="#"><span
-                                                aria-hidden="true">«</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span
-                                                aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
                     </div>
                 </div>
             </div>

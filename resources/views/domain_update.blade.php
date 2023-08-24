@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Domains</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
-</head>
-
-<body>
-@include('nav')
-<div class="container mb-2 mt-2">
-    <div class="container mt-2">
-        <h1>Adding new Domain</h1>
-        <form method="post" action="{{route('type_add')}}">
-            <input type="text" class="mb-2" name="domain" placeholder="Domain ..">
-            <button class="btn btn-secondary mx-2" type="submit">Add</button>
-        </form>
+@extends('layouts.nav')
+@section('title', 'Update Domain')
+@section('content')
+    <div class="container-fluid">
+        <h3 class="text-dark mb-4">Domains</h3>
+        <div class="card shadow mb-3">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Update Domain {{$domain->type}} #{{$domain->id}}</p>
+            </div>
+            <div class="card-body">
+                @include('components.success')
+                <form method="post" action="{{route('domain_update',$domain->id)}}">
+                    @csrf
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label" for="domain"><strong>Domain</strong></label>
+                                <input class="form-control" type="text" id="domain" placeholder="gmail.con" value="{{$domain->type}}" name="domain">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="country"><strong>Country</strong></label>
+                                <input class="form-control" type="text" placeholder="de" value="{{$domain->country==0?'General':$domain->country}}" name="country">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-</div>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+@endsection

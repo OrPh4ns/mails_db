@@ -24,12 +24,10 @@ class ProfileController extends Controller
         $u->save();
         return $this->success('Profile Updated Successfully');
     }
-
     public function editPass()
     {
 
     }
-
     public function getReport()
     {
 

@@ -26,27 +26,28 @@
                     </a>
                     <hr class="sidebar-divider my-0">
                     <ul class="navbar-nav text-light" id="accordionSidebar-1">
-                        <li class="nav-item"><a class="nav-link active" href="index.html"><i
+                        <li class="nav-item"><a class="nav-link active" href="/"><i
                                     class="fas fa-tachometer-alt"></i><span>&nbsp;Dashboard</span></a></li>
                         <hr class="sidebar-divider">
                         <div class="sidebar-heading">
                             <p class="mb-0">emails</p>
                         </div>
                         <li class="nav-item">
-                            <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="false"
+                            <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true"
                                     aria-controls="collapse-1" href="#collapse-1" role="button"><i
                                         class="fas fa-cog"></i>&nbsp;<span>Emails</span></a>
                                 <div class="collapse" id="collapse-1">
                                     <div class="bg-white border rounded py-2 collapse-inner">
-                                        <h6 class="collapse-header">Emails</h6><a class="collapse-item"
-                                                                                  href="/emails">Emails</a><a
-                                            class="collapse-item" href="/filter">List Filter</a>
+                                        <h6 class="collapse-header">Emails</h6>
+                                        <a class="collapse-item" href="/emails">Emails</a>
+                                        <a class="collapse-item" href="/filter">List Filter</a>
+                                        <a class="collapse-item" href="/export_email">Export Emails</a>
                                     </div>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="false"
+                            <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true"
                                     aria-controls="collapse-2" href="#collapse-2" role="button"><i
                                         class="fas fa-wrench"></i>&nbsp;<span>Domains</span></a>
                                 <div class="collapse" id="collapse-2">
@@ -54,8 +55,7 @@
                                         <h6 class="collapse-header">CUSTOM domains:</h6><a class="collapse-item"
                                                                                            href="/domains">Domains</a><a
                                             class="collapse-item" href="/domain_add">Add Domains</a>
-                                        <a
-                                            class="collapse-item" href="utilities-animation.html">Invalid Domains</a>
+                                        <a class="collapse-item" href="/invalid_domains">Invalid Domains</a>
                                     </div>
                                 </div>
                             </div>

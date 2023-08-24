@@ -17,13 +17,16 @@ Route::post('filter', [\App\Http\Controllers\EmailsController::class, 'filter'])
 /**
  * Domains
  */
-Route::get('/domains', [\App\Http\Controllers\DomainController::class, 'index'])->name('domains');
+Route::get('/domains', [\App\Http\Controllers\DomainController::class, 'index']);
+Route::get('/invalid_domains', [\App\Http\Controllers\DomainController::class,'show_invalid']);
 Route::post('/domains_check', [\App\Http\Controllers\DomainController::class,'index'])->name('domains_check');
-
 Route::get('/domain_add', function (){return view('domain_add');});
 Route::post('/domain_add', [\App\Http\Controllers\DomainController::class, 'store'])->name('domain_add');
-Route::get('/domain_update/{id}')->name('domain_update');
-Route::post('/type_add', [\App\Http\Controllers\DomainController::class, 'store'])->name('type_add');
+Route::get('/domain_update/{id}', [\App\Http\Controllers\DomainController::class, 'update_show']);
+Route::post('/domain_update', [\App\Http\Controllers\DomainController::class, 'update'])->name('domain_update');
+Route::get('/domain_invalid/{id}', [\App\Http\Controllers\DomainController::class, 'invalid']);
+Route::get('/domain_valid/{id}', [\App\Http\Controllers\DomainController::class, 'valid']);
+
 
 Route::controller(\App\Http\Controllers\UserController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
@@ -36,4 +39,5 @@ Route::controller(\App\Http\Controllers\UserController::class)->group(function (
  * Profile
  */
 
-Route::get('/profile', [P])
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'getInfos']);
+Route::post('/profile', [\App\Http\Controllers\ProfileController::class, 'editInfo'])->name('edit_info');

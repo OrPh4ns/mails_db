@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('count')->default(0);
             $table->boolean('valid')->default(true);
+            $table->string('country')->default(0);
             $table->timestamp('created_at')->useCurrent();
         });
     }

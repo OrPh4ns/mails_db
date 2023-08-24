@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Domains extends Model
 {
     use HasFactory;
-    protected $fillable=['type'];
+    protected $fillable=['type', 'country'];
     public $timestamps=false;
 }

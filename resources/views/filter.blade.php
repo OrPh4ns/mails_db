@@ -23,6 +23,7 @@
                                                                 <h1>All Count : <span style="color: rgb(11,175,46);">{{$count}}</span></h1>
                                                                 <h1>New Emails : <span style="color: rgb(65,76,206);">{{count($new_emails)}}</span></h1>
                                                                 <h1>Exists Emails : <span style="color: rgb(206,65,86);">{{count($exist_emails)}}</span></h1>
+                                                                <h1>Invalid Emails : <span style="color: rgb(255,75,0);">{{$invalid_emails}}</span></h1>
                                                             </div>
                                                         </div>
                                                         <div class="col-auto"><i
