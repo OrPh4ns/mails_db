@@ -9,8 +9,9 @@
             </div>
             <div class="card-body">
                 @include('components.success')
-                <form method="post" action="{{route('domain_update',$domain->id)}}">
+                <form method="post" action="{{route('domain_update')}}">
                     @csrf
+                    <input type="hidden" name="domain_id" value="{{ $domain->id }}">
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">

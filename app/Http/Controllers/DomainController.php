@@ -31,16 +31,15 @@ class DomainController extends Controller
         return view('domain_update', ['domain'=>Domains::findOrFail($id)]);
     }
 
-    public function update(int $id)
+    public function update(Domains $domain)
     {
         if(strlen($_POST['domain'])==0)
         {
             back()->withErrors(['Domain should not be empty']);
             die();
         }
-
-        Domains::where('id',$id)->update(['']);
-        return view('domain_update', ['domain'=>Domains::findOrFail($id)]);
+        $domain->where('id',$_POST['domain_id'])->update(['type'=>$_POST['domain'], 'country'=>strlen($_POST['country'])>0?$_POST['country']:0]);
+        return redirect('/domains')->with(['success' => 'Domain successfully updated']);
     }
     public function delete(int $id)
     {

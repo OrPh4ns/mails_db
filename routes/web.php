@@ -23,7 +23,7 @@ Route::post('/domains_check', [\App\Http\Controllers\DomainController::class,'in
 Route::get('/domain_add', function (){return view('domain_add');});
 Route::post('/domain_add', [\App\Http\Controllers\DomainController::class, 'store'])->name('domain_add');
 Route::get('/domain_update/{id}', [\App\Http\Controllers\DomainController::class, 'update_show']);
-Route::post('/domain_update', [\App\Http\Controllers\DomainController::class, 'update'])->name('domain_update');
+Route::post('/domain_update/', [\App\Http\Controllers\DomainController::class, 'update'])->name('domain_update');
 Route::get('/domain_invalid/{id}', [\App\Http\Controllers\DomainController::class, 'invalid']);
 Route::get('/domain_valid/{id}', [\App\Http\Controllers\DomainController::class, 'valid']);
 
