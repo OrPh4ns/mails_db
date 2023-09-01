@@ -71,7 +71,18 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Email
+                                            <div class="mb-3"><label class="form-label" for="country"><strong>Country
+                                                        list</strong></label>
+                                                <select class="form-select" aria-label="Default select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="mb-3"><label class="form-label" for="emails"><strong>Email
                                                         list</strong></label><textarea name="emails" class="form-control"
                                                                                        style="height: 210px;"></textarea>
                                             </div>

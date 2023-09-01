@@ -16,7 +16,6 @@ class EmailsController extends Controller
 
     public function index(int $id = 1)
     {
-
         $id < 0 ? die('Error') : 1;
         $perPage = 100; // Number of items per page
         $offset = ($id - 1) * $perPage;

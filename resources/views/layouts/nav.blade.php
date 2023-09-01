@@ -60,15 +60,28 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="true"
+                                    aria-controls="collapse-3" href="#collapse-3" role="button"><i
+                                        class="fas fa-wrench"></i>&nbsp;<span>Countries</span></a>
+                                <div class="collapse" id="collapse-3">
+                                    <div class="bg-white border rounded py-2 collapse-inner">
+                                        <h6 class="collapse-header">CUSTOM Countries:</h6><a class="collapse-item"
+                                                                                           href="/countries">countries</a><a
+                                            class="collapse-item" href="/add_country">Add Country</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                         <hr class="sidebar-divider">
                         <div class="sidebar-heading">
                             <p class="mb-0">Subscrebtion</p>
                         </div>
                         <li class="nav-item">
                             <div><a class="btn btn-link nav-link" data-bs-toggle="collapse" aria-expanded="false"
-                                    aria-controls="collapse-3" href="#collapse-3" role="button"><i
+                                    aria-controls="collapse-4" href="#collapse-4" role="button"><i
                                         class="fas fa-folder"></i>&nbsp;<span>Subscrebtion</span></a>
-                                <div class="collapse" id="collapse-3">
+                                <div class="collapse" id="collapse-4">
                                     <div class="bg-white border rounded py-2 collapse-inner">
                                         <h6 class="collapse-header">Functions</h6><a class="collapse-item"
                                                                                      href="login.html">Messages</a><a
